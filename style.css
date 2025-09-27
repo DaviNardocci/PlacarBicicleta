@@ -1,0 +1,191 @@
+/* ---------------------------
+   Estilos gerais (ambas páginas)
+   --------------------------- */
+:root{
+    --bg: #000;
+    --panel: #111;
+    --muted: rgba(255,255,255,0.2);
+    --accent: #00ff99;
+}
+
+*{box-sizing: border-box}
+
+body{
+    background-color: var(--bg);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* container central */
+.container{
+    text-align: center;
+    max-width: 900px;
+    width: 92%;
+    padding: 20px;
+}
+
+/* títulos e pontuação (index) */
+h1{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.score{
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* botões padrão */
+button{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.18s, color 0.18s;
+}
+
+button:hover,
+button:focus{
+    background-color: white;
+    color: black;
+    outline: none;
+}
+
+/* Modal (index) */
+.modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content{
+    background: var(--panel);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.modal-content h2{
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.modal-content input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--muted);
+    background: transparent;
+    color: white;
+    text-align: center;
+}
+
+/* botões do modal alinhados */
+.modal-buttons{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* ---------------------------
+   Estilos específicos do placar
+   aplicados somente quando o <body> tem .placar-page
+   --------------------------- */
+.placar-page body, /* fallback - não faz nada, só pra leitura */
+.placar-page .container{
+    /* container já está legal, mantemos centralização */
+}
+
+/* título do placar (um pouco maior) */
+.placar-page h1{
+    font-size: 2.4rem;
+    margin-bottom: 28px;
+}
+
+/* ranking - estilo "arcade" mais espaçado */
+.placar-page .ranking,
+.placar-page .user-rank{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* cada linha do ranking usa grid para 3 colunas */
+.placar-page .rank-line{
+    display: grid;
+    grid-template-columns: 64px 1fr 88px;
+    align-items: center;
+    font-size: 1.6rem; /* maior legibilidade */
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 12px 6px;
+}
+
+/* posição — mais forte */
+.placar-page .rank-line .position{
+    text-align: left;
+    font-weight: 700;
+}
+
+/* coloca um traço logo após a posição: "1 —" */
+.placar-page .rank-line .position::after{
+    content: " —";
+    margin-left: 8px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+}
+
+/* nome central (lado esquerdo da coluna do nome) */
+.placar-page .rank-line .name{
+    text-align: left;
+    padding-left: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* pontos alinhados à direita */
+.placar-page .rank-line .points{
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* destaque para o jogador atual (11º exemplo) */
+.placar-page .highlight{
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom: 2px solid rgba(0,255,153,0.18);
+}
+
+/* responsividade — ajustes em telas pequenas */
+@media (max-width: 480px){
+    .placar-page .rank-line{
+        grid-template-columns: 48px 1fr 64px;
+        font-size: 1.2rem;
+        padding: 10px 4px;
+    }
+
+    .score{ font-size: 2.6rem; }
+    h1{ font-size: 1.6rem; }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pontuação</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Pontuação:</h1>
+        <p class="score">0</p>
+        <button onclick="abrirModal()">Registrar Nome</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <h2 id="modal-title">Registre o seu nome e vá para a tela de pontuação</h2>
+            <input id="nomeInput" type="text" placeholder="Digite seu nome" />
+            <div class="modal-buttons">
+                <button onclick="fecharModal()">Cancelar</button>
+                <button onclick="irParaPlacar()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal(){
+            const m = document.getElementById('modal');
+            m.style.display = 'flex';
+            m.setAttribute('aria-hidden','false');
+            document.getElementById('nomeInput').focus();
+        }
+        function fecharModal(){
+            const m = document.getElementById('modal');
+            m.style.display = 'none';
+            m.setAttribute('aria-hidden','true');
+        }
+        function irParaPlacar(){
+            // aqui o backend pode pegar o nome; por enquanto só navega
+            window.location.href = 'placar.html';
+        }
+        // fechar modal com Escape
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape') fecharModal();
+        });
+    </script>
+</body>
+</html>
