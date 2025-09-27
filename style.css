@@ -108,9 +108,7 @@ button:focus{
    aplicados somente quando o <body> tem .placar-page
    --------------------------- */
 .placar-page body, /* fallback - não faz nada, só pra leitura */
-.placar-page .container{
-    /* container já está legal, mantemos centralização */
-}
+
 
 /* título do placar (um pouco maior) */
 .placar-page h1{
@@ -188,4 +186,21 @@ button:focus{
 
     .score{ font-size: 2.6rem; }
     h1{ font-size: 1.6rem; }
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Destacar jogador atual com verde neon */
+.table-success {
+    color: #00ff99 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #00ff99 !important;
+}
+
+/* Ajustes de fonte e espaçamento para parecer arcade */
+table th, table td {
+    font-size: 1.4rem;
+    padding: 12px 8px;
 }
